@@ -1,17 +1,18 @@
 fun main() {
-    fun part1(input: List<String>): Int {
-        return input.size
+    fun countDescents(input: List<String>): Int {
+        var increases = 0
+
+        for (i in 1 until input.size) {
+            if (input[i-1].toInt() < input[i].toInt()) increases++
+        }
+
+        return increases
     }
 
-    fun part2(input: List<String>): Int {
-        return input.size
-    }
-
-    // test if implementation meets criteria from the description, like:
-    val testInput = readInput("Day01_test")
-    check(part1(testInput) == 1)
-
-    val input = readInput("Day01")
-    part1(input).println()
-    part2(input).println()
+    println("Testing Day01 challenge: Sonar Sweep...")
+    val input = readInput("Day01_test")
+    val result = countDescents(input)
+    println("Test result: $result")
+    check(result == 7)
+    println("Test passed!")
 }
